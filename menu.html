@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Меню Кофейни Маркони</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&family=Bubblegum+Sans&display=swap" rel="stylesheet">
+    <style>
+        /* Общие стили */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f4c2c2; /* розовый фон как у заголовков */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .menu-container {
+            max-width: 600px;
+            width: 100%;
+            background: #f5f5f5; /* меняем градиент на светло-серый цвет */
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border: 2px solid #fff; /* меняем рамку на белую для контраста */
+        }
+
+        /* Заголовок */
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header img {
+            width: 100px;
+            height: auto;
+            filter: drop-shadow(0 0 10px rgba(255, 223, 0, 0.5)); /* Эффект свечения */
+        }
+
+        .header h1 {
+            font-family: 'Bubblegum Sans', cursive;
+            font-size: 28px;
+            color: #000; /* меняем с #fff на черный */
+            margin: 10px 0 5px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #000; /* меняем с #fff на черный */
+            margin: 0;
+        }
+
+        /* Разделы */
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section h2 {
+            font-family: 'Bubblegum Sans', cursive;
+            font-size: 20px;
+            color: #333;
+            background-color: #f4c2c2; /* Нежно-розовый фон для заголовков */
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+           
+        }
+
+        .section h2.crown::after {
+            content: '👑';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .section h2.leaf::after {
+            content: '🍃';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .section h2.snowflake::after {
+            content: '❄️';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .section h2.berry::after {
+            content: '🍓';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .section h2.bubble::after {
+            content: '🫧';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        /* Напитки */
+        .item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 5px 0;
+            border-bottom: 1px dashed #e0e0e0;
+        }
+
+        .item-name {
+            font-size: 16px;
+            color: #000; /* меняем с #fff на черный */
+            font-weight: 600; /* делаем текст жирнее */
+        }
+
+        .item-description {
+            font-size: 12px;
+            color: #000; /* меняем с rgba(255, 255, 255, 0.8) на черный */
+            margin-top: 2px;
+            font-weight: 500; /* добавляем умеренную жирность */
+        }
+
+        .item-price {
+            font-size: 14px;
+            color: #000; /* меняем с #fff на черный */
+            font-weight: 600; /* делаем текст жирнее */
+        }
+
+        /* Футер */
+        .footer {
+            text-align: center;
+            background-color: #f4c2c2; /* Меняем #d2b48c на розовый цвет, такой же как у заголовков */
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #333;
+            position: relative;
+        }
+
+        .footer::after {
+            content: '👑';
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .temp-logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .coffee-cup {
+            width: 60px;
+            height: 45px;
+            background: #FFD700;
+            border-radius: 0 0 30px 30px;
+            position: relative;
+            margin: 20px auto;
+        }
+
+        .coffee-cup:before {
+            content: '';
+            position: absolute;
+            right: -15px;
+            top: 5px;
+            width: 20px;
+            height: 30px;
+            border: 5px solid #FFD700;
+            border-radius: 20px;
+        }
+
+        .crown {
+            position: relative;
+            display: inline-block;
+            margin: 0;
+            padding: 5px 10px;
+            background-color: #f4c2c2;
+            border-radius: 5px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <!-- Заголовок -->
+        <div class="header">
+            <!-- Здесь должен быть логотип (жёлтая чашка с короной). Замени путь на свой -->
+            <div style="font-size: 64px; margin-bottom: 20px;">☕👑</div>
+            <h1>Кофейня Маркони</h1>
+            <p>Твой королевский кофе!</p>
+        </div>
+
+        <!-- Кофе -->
+        <div class="section">
+            <h2>Кофе ☕</h2>
+            <div class="item">
+                <div>
+                    <div class="item-name">Двойной эспрессо</div>
+                </div>
+                <div class="item-price">40 мл — 150 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Американо</div>
+                </div>
+                <div class="item-price">350 мл — 150 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Капучино</div>
+                </div>
+                <div class="item-price">350 мл — 190 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Латте</div>
+                </div>
+                <div class="item-price">350 мл — 190 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Флет уайт</div>
+                </div>
+                <div class="item-price">200 мл — 190 ₽</div>
+            </div>
+        </div>
+
+        <!-- Чай -->
+        <div class="section">
+            <h2 class="leaf">Чай 🍃</h2>
+            <div class="item">
+                <div>
+                    <div class="item-name">Чёрный чай</div>
+                </div>
+                <div class="item-price">350 мл — 80 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Зелёный чай</div>
+                </div>
+                <div class="item-price">350 мл — 80 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Каркаде чай</div>
+                </div>
+                <div class="item-price">350 мл — 80 ₽</div>
+            </div>
+        </div>
+
+        <!-- Авторский кофе -->
+        <div class="section">
+            <h2 class="crown">Авторские</h2>
+            <div class="item">
+                <div>
+                    <div class="item-name">Капучино вишневая панакота</div>
+                    <div class="item-description">Нежный вкус молока с лёгкими нотками вишневой панакоты — вишневый пирог в твоем стакане!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Капучино малина-кокос</div>
+                    <div class="item-description">Сочная малина и тропический кокос — идеальный баланс сладости и свежести!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Капучино вишневый ликер</div>
+                    <div class="item-description">Глубокий вкус вишневого ликёра — для тех, кто любит изысканные сочетания!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Латте сгущённое молоко с тыквой</div>
+                    <div class="item-description">Тёплый осенний вкус тыквы с нежной сладостью сгущёнки!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Латте сырный</div>
+                    <div class="item-description">Необычное сочетание сливочного сыра и кофе — для смелых гурманов!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Раф с арахисовой халвой</div>
+                    <div class="item-description">Яркий арахисовый вкус с сливочным послевкусием — для ценителей утончённости!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Раф с лимонным тартом</div>
+                    <div class="item-description">Освежающий вкус лимонного тарта в нежном рафе — идеально для утра!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Матча, матча классик</div>
+                    <div class="item-description">Классическая матча с лёгкой кислинкой — для любителей ярких вкусов!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Матча Бергамот</div>
+                    <div class="item-description">Матча с нотками бергамота — утончённый вкус для особого настроения!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Матча малина</div>
+                    <div class="item-description">Сочетание матчи и сладкой малины — яркий и незабываемый вкус!</div>
+                </div>
+                <div class="item-price">350 мл — 270 ₽</div>
+            </div>
+        </div>
+
+        <!-- Фруктовый чай -->
+        <div class="section">
+            <h2 class="berry">Фруктовый чай 🍓</h2>
+            <div class="item">
+                <div>
+                    <div class="item-name">Клюква апельсин</div>
+                    <div class="item-description">Яркий вкус клюквы с лёгкой кислинкой — идеально для бодрого дня!</div>
+                </div>
+                <div class="item-price">350 мл — 155 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Малина-чёрная смородина</div>
+                    <div class="item-description">Сочный дуэт малины и смородины — для любителей ягодных миксов!</div>
+                </div>
+                <div class="item-price">350 мл — 155 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Манго-апельсин</div>
+                    <div class="item-description">Нежный вкус манго с апельсиновыми нотками — как летний сад в чашке!</div>
+                </div>
+                <div class="item-price">350 мл — 155 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Облепиха-имбирь</div>
+                    <div class="item-description">Облепиха с пряным имбирём — согревающий и витаминный напиток!</div>
+                </div>
+                <div class="item-price">350 мл — 155 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Облепиха-малина</div>
+                    <div class="item-description">Сладость малины и яркость облепихи — для солнечного настроения!</div>
+                </div>
+                <div class="item-price">350 мл — 155 ₽</div>
+            </div>
+        </div>
+
+        <!-- Холодные напитки -->
+        <div class="section">
+            <h2 class="snowflake">Холодные напитки ❄️</h2>
+            <div class="item">
+                <div>
+                    <div class="item-name">Ice капучино</div>
+                    <div class="item-description">Молоко, двойной эспрессо, сироп, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 340 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Ice латте</div>
+                    <div class="item-description">Молоко, эспрессо, сироп, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 340 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Ice бамбл</div>
+                    <div class="item-description">Двойной эспрессо, апельсиновый сок, карамельный сироп, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 270 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Ice эспрессо тоник</div>
+                    <div class="item-description">Двойной эспрессо, тоник, апельсиновый сироп, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 260 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Ice чай — кофе</div>
+                    <div class="item-description">Двойной эспрессо, молоко, сироп, кокосовое пюре, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 345 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Мохито классик</div>
+                    <div class="item-description">Мята, лайм, минеральная вода, сироп, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 220 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Мохито клубничный</div>
+                    <div class="item-description">Мята, лайм, клубника, клубничное пюре, минеральная вода, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 245 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Мохито ананас</div>
+                    <div class="item-description">Мята, лайм, пюре ананаса, минеральная вода, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 245 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Ice матча латте</div>
+                    <div class="item-description">Двойной эспрессо, молоко, матча, лёд.</div>
+                </div>
+                <div class="item-price">500 мл — 350 ₽</div>
+            </div>
+        </div>
+
+        <!-- Bubble Tea -->
+        <div class="section">
+            <h2 class="bubble">Bubble Tea 🫧</h2>
+            <div class="item">
+                <div>
+                    <div class="item-name">Клубничный</div>
+                    <div class="item-description">Сочная сладость с яркими нотками, словно летние дни в каждом глотке.</div>
+                </div>
+                <div class="item-price">500 мл — 350 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Манго</div>
+                    <div class="item-description">Тропическая свежесть, которая перенесёт тебя на солнечный остров с первым же глотком.</div>
+                </div>
+                <div class="item-price">500 мл — 350 ₽</div>
+            </div>
+            <div class="item">
+                <div>
+                    <div class="item-name">Йогуртовый</div>
+                    <div class="item-description">Нежный сливочный вкус с лёгкой кислинкой, который обволакивает, как мягкое облако.</div>
+                </div>
+                <div class="item-price">500 мл — 350 ₽</div>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <div class="footer">
+            Кофейня Маркони — твой королевский кофе каждый день! ☕ Мы в Telegram: <a href="https://t.me/+pi1a8hTbLJI5NDIy" style="color: #333; text-decoration: underline;">@markoni_coffee</a>
+        </div>
+    </div>
+</body>
+</html>
